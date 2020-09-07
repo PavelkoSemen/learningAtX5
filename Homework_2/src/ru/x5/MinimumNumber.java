@@ -29,11 +29,9 @@ public class MinimumNumber {
 
             System.out.println(getMinimumValue(numbers));
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public static int getMinimumValue(int[] numbers) {
@@ -48,6 +46,4 @@ public class MinimumNumber {
 
         return min;
     }
-
-
 }

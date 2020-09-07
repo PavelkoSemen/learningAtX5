@@ -6,11 +6,12 @@ import java.io.InputStreamReader;
 
 import static ru.x5.Utility.isNumber;
 
+/*
+    2. Ввести целое трехзначное число в консоли и найти
+    сумму цифр этого трехзначного числа
+*/
 public class SumDigits {
-    /*
-        2. Ввести целое трехзначное число в консоли и найти
-        сумму цифр этого трехзначного числа
-    */
+
     public static void main(String[] args) {
         try (var reader = new BufferedReader(new InputStreamReader(System.in))) {
             String number;
@@ -28,7 +29,6 @@ public class SumDigits {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public static int summingEachValue(String number) {
@@ -39,5 +39,4 @@ public class SumDigits {
 
         return sum;
     }
-
 }
