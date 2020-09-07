@@ -29,16 +29,13 @@ public class MagicNumberChanger {
         }
     }
 
-
     public static int changeTheNumber(String stringNumber) {
         int number = Integer.parseInt(stringNumber);
-        if(number > 0){
+        if (number > 0) {
             return ++number;
-        }else if(number < 0) {
+        } else if (number < 0) {
             return number - 2;
         }
         return 10;
     }
-
-
 }

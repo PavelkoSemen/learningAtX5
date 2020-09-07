@@ -1,17 +1,16 @@
 package ru.x5;
 
-/*
-    6. Ввести целое число в консоли. Вывести его строкуописание вида «отрицательное четное число»,
-    «нулевое число», «положительное нечетное число» и
-    т. д.
-*/
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import static ru.x5.Utility.isNumber;
 
+/*
+    6. Ввести целое число в консоли. Вывести его строкуописание вида «отрицательное четное число»,
+    «нулевое число», «положительное нечетное число» и
+    т. д.
+*/
 public class NumberProperties {
     public static void main(String[] args) {
         try (var reader = new BufferedReader(new InputStreamReader(System.in))) {
@@ -54,6 +53,4 @@ public class NumberProperties {
 
         return properties.toString();
     }
-
-
 }

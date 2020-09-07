@@ -3,8 +3,8 @@ package ru.x5;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import static ru.x5.Utility.*;
 
+import static ru.x5.Utility.*;
 
 /*
     1. Ввести целое число в консоли и вывести на экран
@@ -23,11 +23,5 @@ public class LastDigit {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
-
-
 }

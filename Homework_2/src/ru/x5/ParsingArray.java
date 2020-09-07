@@ -20,7 +20,6 @@ public class ParsingArray {
         System.out.println("Sum of even negative elements: " + sumOfEvenNegativeElements());
         System.out.println("Count of positive elements: " + countOfPositiveElements());
         System.out.println("Arithmetic mean: " + arithmeticMean());
-
     }
 
     public static int getMaxValue() {
@@ -33,7 +32,6 @@ public class ParsingArray {
         }
 
         return maxValue;
-
     }
 
     public static int sumPositiveElements() {
@@ -85,6 +83,4 @@ public class ParsingArray {
 
         return (double) sum / countElement;
     }
-
-
 }

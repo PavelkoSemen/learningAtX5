@@ -11,11 +11,10 @@ import java.util.Arrays;
 public class InvertedArray {
     public static void main(String[] args) {
 
-        int[] intArrays = new int[]{15, 10, 51, -6, -5, 3, -10, -34, 0, 32, 56, -12, 24, -52,8};
+        int[] intArrays = new int[]{15, 10, 51, -6, -5, 3, -10, -34, 0, 32, 56, -12, 24, -52, 8};
         reverse(intArrays);
 
         System.out.println("Inverted array: " + Arrays.toString(intArrays));
-
     }
 
     public static void reverse(int[] ints) {
@@ -26,6 +25,5 @@ public class InvertedArray {
             ints[i] = tmp;
 
         }
-
     }
 }

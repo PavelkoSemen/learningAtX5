@@ -28,7 +28,6 @@ public class Counter {
         }
     }
 
-
     public static int increaseInTheNumber(String stringNumber) {
         int number = Integer.parseInt(stringNumber);
         if (number > 0) {
@@ -36,6 +35,4 @@ public class Counter {
         }
         return number;
     }
-
-
 }
