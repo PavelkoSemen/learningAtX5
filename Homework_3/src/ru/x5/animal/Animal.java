@@ -1,8 +1,8 @@
 package ru.x5.animal;
 
 public class Animal {
-    private String food;
-    private String location;
+    protected String food;
+    protected String location;
 
     public Animal() {
 
@@ -18,11 +18,11 @@ public class Animal {
     }
 
     public void eat() {
-        System.out.println(this.getClass().getSimpleName()+ " is eating " + food);
+        System.out.println("Animal is eating " + food);
     }
 
     public void sleep() {
-        System.out.println("Sleep");
+        System.out.println(this.getClass().getSimpleName() + " sleep");
     }
 
     public String getFood() {

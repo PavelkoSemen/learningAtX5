@@ -23,7 +23,6 @@ public class Horse extends Animal {
 
     @Override
     public void eat() {
-        super.eat();
+        System.out.println("Horse is eating " + food);
     }
-
 }
