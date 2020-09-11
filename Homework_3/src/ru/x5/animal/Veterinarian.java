@@ -8,6 +8,4 @@ public class Veterinarian {
                 " eat " + animal.getFood() +
                 " location " + animal.getLocation());
     }
-
-
 }
