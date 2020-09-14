@@ -8,11 +8,12 @@ public class Cat extends Animal {
         super(food, location);
         this.countLife = countLife;
     }
-    public Cat(String food, String location){
+
+    public Cat(String food, String location) {
         this(food, location, 9);
     }
 
-    public Cat(){
+    public Cat() {
         this("kitekat", "Home", 9);
     }
 

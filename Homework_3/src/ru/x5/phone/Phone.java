@@ -5,9 +5,9 @@ public class Phone {
     private int weight;
     private String model;
 
-
     public Phone() {
-
+        this.number = 999;
+        this.model = "default phone";
     }
 
     public Phone(int number, String model) {
@@ -20,7 +20,6 @@ public class Phone {
         this.weight = weight;
 
     }
-
 
     public void receiveCall(String name) {
         System.out.println("Звонит " + name);
@@ -44,7 +43,6 @@ public class Phone {
                 stringBuilder.append(number);
                 stringBuilder.append(" ");
             }
-
 
         }
 
