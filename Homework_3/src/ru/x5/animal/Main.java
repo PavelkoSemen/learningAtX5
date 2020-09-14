@@ -10,10 +10,8 @@ public class Main {
                 new Dog("bread", "house", 20),
                 new Horse("carrot", "barn", 35)};
 
-
-        for (Animal animal: animals){
+        for (Animal animal : animals) {
             veterinarian.treatAnimal(animal);
         }
-
     }
 }

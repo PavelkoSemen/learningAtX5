@@ -1,18 +1,19 @@
 package ru.x5.animal;
 
-public class Dog extends Animal  {
+public class Dog extends Animal {
 
-    int noseLength;
+    private int noseLength;
 
     public Dog(String food, String location, int noseLength) {
         super(food, location);
         this.noseLength = noseLength;
     }
-    public Dog(String food, String location){
+
+    public Dog(String food, String location) {
         this(food, location, 15);
     }
 
-    public Dog(){
+    public Dog() {
         this("meat", "Street", 15);
     }
 
