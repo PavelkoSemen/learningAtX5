@@ -23,20 +23,19 @@ public class SportCar extends Car {
         System.out.println("SportCar остановился");
     }
 
+    @Override
+    public void printInfo() {
+        String info = super.basePrintInfo() + ", доп. параметры: " +
+                " максимальная скорость - " + maxSpeed;
+
+        System.out.println(info);
+    }
+
     public int getMaxSpeed() {
         return maxSpeed;
     }
 
     public void setMaxSpeed(int maxSpeed) {
         this.maxSpeed = maxSpeed;
-    }
-
-    @Override
-    public void printInfo() {
-        System.out.println("Описание: класс - " + getCarClass() +
-                ", модель - " + getCarModel() +
-                ", вес - " + getWeight() +
-                ", максимальная скорость - " + maxSpeed +
-                ", " + getMotorType());
     }
 }

@@ -27,6 +27,13 @@ public abstract class Car {
 
     public abstract void printInfo();
 
+    public String basePrintInfo() {
+        return "Описание: класс - " + carClass +
+                ", модель - " + carModel +
+                ", вес - " + weight +
+                ", " + motorType.toString();
+    }
+
     public String getCarModel() {
         return carModel;
     }
