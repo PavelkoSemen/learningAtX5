@@ -24,21 +24,19 @@ public class Lorry extends Car {
         System.out.println("Грузовик остановился");
     }
 
+    @Override
+    public void printInfo() {
+        String info = super.basePrintInfo() + ", доп. параметры: " +
+                " грузоподъемность - " + liftingCapacity;
+        System.out.println(info);
+    }
+
     public double getLiftingCapacity() {
         return liftingCapacity;
     }
 
     public void setLiftingCapacity(double liftingCapacity) {
         this.liftingCapacity = liftingCapacity;
-    }
-
-    @Override
-    public void printInfo() {
-        System.out.println("Описание: класс - " + getCarClass() +
-                ", модель - " + getCarModel() +
-                ", вес - " + getWeight() +
-                ", грузоподъемность - " + liftingCapacity +
-                ", " + getMotorType());
     }
 }
 
