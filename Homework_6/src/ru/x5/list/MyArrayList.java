@@ -2,9 +2,8 @@ package ru.x5.list;
 
 import java.util.Arrays;
 
-public class OwnList<E> {
+public class MyArrayList<E> implements MyList<E> {
 
-    // Внутренний массив для реализации ArrayList
     private E[] internalArray;
 
     private final int defaultLength = 10;
@@ -13,18 +12,18 @@ public class OwnList<E> {
 
     private int cursor;
 
-    public OwnList() {
+    public MyArrayList() {
         internalArray = newInternalArray(defaultLength);
     }
 
-    public OwnList(int size) {
+    public MyArrayList(int size) {
         if (size > defaultLength) {
             internalArray = newInternalArray(size);
             this.lengthInternalArray = size;
         } else if (size >= 0) {
             internalArray = newInternalArray(defaultLength);
         } else {
-            throw new IllegalArgumentException("Incorrect DIYarrayList size specified");
+            throw new IllegalArgumentException("Incorrect MyArrayList size specified");
         }
     }
 
@@ -61,27 +60,15 @@ public class OwnList<E> {
         return true;
     }
 
-    public boolean addAll(OwnList<E> otherOwnList) {
-        for (int i = 0; i < otherOwnList.size(); i++) {
-            this.add(otherOwnList.get(i));
+    public boolean addAll(MyArrayList<E> otherMyArrayList) {
+        for (int i = 0; i < otherMyArrayList.size(); i++) {
+            this.add(otherMyArrayList.get(i));
         }
         return true;
     }
 
     public E get(int index) {
         return internalArray[index];
-    }
-
-    public E set(int index, E element) {
-
-        if (index < 0 || index > cursor) {
-            throw new IndexOutOfBoundsException("Invalid index");
-        }
-
-        E overwrittenItem = internalArray[index];
-        internalArray[index] = element;
-
-        return overwrittenItem;
     }
 
     public boolean remove(Object o) {
@@ -105,13 +92,13 @@ public class OwnList<E> {
     }
 
     public E remove(int index) {
-        if (index > cursor)
+        if (index > cursor && index < 0)
             throw new IndexOutOfBoundsException("Invalid index");
 
         E objectToDelete = internalArray[index];
         if (index == 0)
             internalArray = Arrays.copyOfRange(internalArray, index + 1, lengthInternalArray);
-        else if (index == cursor && index == lengthInternalArray)
+        else if (index == cursor)
             internalArray = Arrays.copyOfRange(internalArray, 0, index);
         else {
             E[] modifiedArray = newInternalArray(cursor - 1);
@@ -128,28 +115,10 @@ public class OwnList<E> {
 
         cursor -= 1;
         return objectToDelete;
-
     }
 
     public void clear() {
         internalArray = newInternalArray(defaultLength);
-    }
-
-    public Object[] toArray() {
-        return Arrays.copyOf(internalArray, cursor);
-    }
-
-    public <T> T[] toArray(T[] a) {
-
-        if (a.length < cursor)
-            return (T[]) Arrays.copyOf(internalArray, cursor, a.getClass());
-
-        System.arraycopy(internalArray, 0, a, 0, cursor);
-
-        if (a.length > cursor)
-            a[cursor] = null;
-
-        return a;
     }
 
     @SuppressWarnings("unchecked")
@@ -170,5 +139,4 @@ public class OwnList<E> {
         return Arrays.toString(Arrays.copyOf(internalArray, cursor));
 
     }
-
 }
