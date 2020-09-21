@@ -1,13 +1,13 @@
 package ru.x5.fruitbasket;
 
-import ru.x5.list.OwnList;
+import ru.x5.list.MyArrayList;
 
 public class Box<T extends Fruit> {
 
-    private final OwnList<T> fruitList;
+    private final MyArrayList<T> fruitList;
 
     public Box() {
-        fruitList = new OwnList<>();
+        fruitList = new MyArrayList<>();
     }
 
     public void add(T fruit) {
@@ -31,7 +31,7 @@ public class Box<T extends Fruit> {
 
     public void addBox(Box<T> fruitBox) {
         if (!(fruitBox == null && fruitBox.fruitList.isEmpty())) {
-            fruitList.addAll(fruitBox.fruitList);
+            addBox(fruitBox.fruitList);
             fruitBox.clearBox();
         }
     }
@@ -40,8 +40,13 @@ public class Box<T extends Fruit> {
         fruitList.clear();
     }
 
+    private void addBox(MyArrayList<T> fruitList) {
+        for (int i = 0; i < fruitList.size(); i++) {
+            this.add(fruitList.get(i));
+        }
+    }
+
     private float getWeight(T fruit, int countFruit) {
         return fruit.getWeight() * countFruit;
     }
-
 }
