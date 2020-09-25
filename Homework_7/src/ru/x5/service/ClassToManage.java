@@ -62,8 +62,10 @@ public class ClassToManage {
                     break;
                 case EXIT:
                     System.out.println("Пока!");
+                    break;
                 default:
                     System.err.println("НЕИЗВЕСТНАЯ КОМАНДА");
+                    break;
             }
         } catch (ExistingAccountException | NotEnoughMoneyException | UnknownAccountException e) {
             System.err.println("Ошибка параметров аккаунта " + e);
