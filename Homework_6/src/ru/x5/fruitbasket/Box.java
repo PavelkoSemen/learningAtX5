@@ -15,7 +15,6 @@ public class Box<T extends Fruit> {
     }
 
     public float getWeight() {
-
         if (fruitList.isEmpty()) {
             return 0;
         }
@@ -29,20 +28,28 @@ public class Box<T extends Fruit> {
         return this.getWeight() == anyBox.getWeight();
     }
 
-    public void addBox(Box<T> fruitBox) {
-        if (!(fruitBox == null && fruitBox.fruitList.isEmpty())) {
-            addBox(fruitBox.fruitList);
-            fruitBox.clearBox();
-        }
-    }
-
     public void clearBox() {
         fruitList.clear();
     }
 
-    private void addBox(MyArrayList<T> fruitList) {
-        for (int i = 0; i < fruitList.size(); i++) {
-            this.add(fruitList.get(i));
+    public void toLeftBox(Box<T> fruitBox) {
+        if (!(fruitBox == null)) {
+            addBox( fruitBox.fruitList, this.fruitList);
+            fruitBox.clearBox();
+        }
+    }
+
+    public void toRightBox(Box<T> fruitBox) {
+        if (!(fruitBox == null)) {
+            addBox(this.fruitList, fruitBox.fruitList);
+            this.clearBox();
+        }
+    }
+
+    //Если не использовать свою коллекцию, можно обойтись методом addAll()
+    private void addBox(MyArrayList<T> fromList, MyArrayList<T> toList) {
+        for (int i = 0; i < fromList.size(); i++) {
+            toList.add(fromList.get(i));
         }
     }
 
