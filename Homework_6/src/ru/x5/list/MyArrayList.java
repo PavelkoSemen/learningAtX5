@@ -88,7 +88,6 @@ public class MyArrayList<E> implements MyList<E> {
         }
 
         return false;
-
     }
 
     public E remove(int index) {
@@ -119,6 +118,7 @@ public class MyArrayList<E> implements MyList<E> {
 
     public void clear() {
         internalArray = newInternalArray(defaultLength);
+        cursor = 0;
     }
 
     @SuppressWarnings("unchecked")

@@ -80,7 +80,6 @@ public class MyLinkedList<E> implements MyList<E> {
         }
 
         return false;
-
     }
 
     private Node<E> desiredNode(int index) {
