@@ -19,5 +19,4 @@ public class IntegratedGraphicsCard extends GraphicsCard {
         return "Встроенная видеокарта " + super.baseCardInfo() +
                 ", используемая RAM " + this.usedRAM;
     }
-
 }
