@@ -11,7 +11,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ClassToManage classToManage = new ClassToManage();
+        DAO<Account> accountDAO = new FilesDAO();
+        AccountService accountService = new AccountServiceImpl(accountDAO);
+        ClassToManage classToManage = new ClassToManage(accountService);
         classToManage.run();
     }
 }

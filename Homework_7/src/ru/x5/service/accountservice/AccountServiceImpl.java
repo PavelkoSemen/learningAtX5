@@ -13,10 +13,6 @@ public class AccountServiceImpl implements AccountService {
         this.accountDAO = accountDAO;
     }
 
-    public AccountServiceImpl() {
-        this(new FilesDAO());
-    }
-
     @Override
     public void withdraw(int accountId, double amount) throws NotEnoughMoneyException, UnknownAccountException {
         Account account = accountDAO.get(accountId);

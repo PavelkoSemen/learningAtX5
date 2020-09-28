@@ -1,6 +1,4 @@
 package ru.x5.service;
-
-
 import ru.x5.service.accountservice.Account;
 import ru.x5.service.accountservice.AccountService;
 import ru.x5.service.accountservice.AccountServiceImpl;
@@ -16,7 +14,11 @@ import java.nio.file.Path;
 import java.util.Scanner;
 
 public class ClassToManage {
-    private AccountService accountService = new AccountServiceImpl();
+    private final AccountService accountService;
+
+    public ClassToManage(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -72,10 +74,6 @@ public class ClassToManage {
         } catch (RuntimeException e) {
             System.err.println(e);
         }
-    }
-
-    public void setDAO(DAO<Account> accountDAO) {
-        accountService.setAccountDAO(accountDAO);
     }
 
     public enum Commands {
