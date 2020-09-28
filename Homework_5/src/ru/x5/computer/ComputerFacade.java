@@ -53,9 +53,7 @@ public class ComputerFacade {
             default:
                 throw new IllegalArgumentException("Несуществующий тип карты");
         }
-
         return graphicsCardFactory.createGraphicsCard();
-
     }
 
     private StorageDevice createStorageDevice(TypeStorageDevice typeStorageDevice) {
@@ -70,8 +68,6 @@ public class ComputerFacade {
             default:
                 throw new IllegalArgumentException("Несуществующий тип носителя");
         }
-
         return deviceFactory.createStorageDevice();
     }
-
 }
