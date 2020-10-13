@@ -1,0 +1,21 @@
+1. Создать новую группу `ideal` для работы над проектом
+	sudo groupadd ideal
+2. Добавить себя в группу `ideal`
+	sudo usermod -a -G ideal semen_pavelko
+3. Создать пользователя для коллеги. Его имя будет `maxim`, рабочая директория `/home/maxim_files`, среда по-умолчанию: `bash`
+4. Необходимо добавить `maxim` в группу `ideal`
+	sudo useradd -G ideal -s /bin/bash -d /home/maxim_files -m  maxim
+	чтобы была возможность переключиться на пользователя задаю ему пароль через утилу
+	sudo passwd maxim
+7. Сделать, чтобы группа `ideal` могла читать и редактировать все файлы в папке `/var/ideal`. Никто не может исполнять, остальные - только читать.
+	sudo mkdir /var/ideal
+	sudo chown :ideal /var/ideal
+	sudo chmod 774 /var/ideal
+	sudo chmod g+s /var/ideal - чтобы все было общедоступное(для группы)
+5. Создать папку(и) `/var/ideal/source`
+	 mkdir /var/ideal/sourse
+6. Создать файл `/var/ideal/source/README.md` с содержимым `# Ideal Project`
+	 echo '# Ideal Project' > /var/ideal/sourse/README.md
+8. Проверить разрешения внутри всех подпапок `/var/ideal`
+	Т.К. доступ при создании ДОСТУП выдаеться по шаблону из конфигов сделаем так
+	sudo chmod 774 - R /var/ideal
