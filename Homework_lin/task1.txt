@@ -1,0 +1,7 @@
+1. Найдите 5 самых больших (по количеству строк) файлов в https://github.com/dry-python/returns/tree/master/returns
+	find -type f -not -empty | xargs wc -l | sort -n | sed '$d' | tail -n 5 - тут конечно некий костыль, т.к. создаеться тотал, я его вырезаю командой sed
+2. Найдите 5 самых маленьких (по количеству строк) файлов во всем проекте https://github.com/dry-python/returns
+	find -type f -not -empty | xargs wc -l | sort -n | head -n 5
+3. Посчитайте, сколько раз внутри проекта используется импорт собственных исходников: выведете сколько раз там встречается начало импорта `from returns`
+	find  -type f -name '*.py' | xargs cat | grep -c 'from returns'
+	тут интереная ситуация, я думаю что прав. По факту прямой импорт идет только в файлах .py, но у вас в .md вставлены куски кода, их я не учитывал
