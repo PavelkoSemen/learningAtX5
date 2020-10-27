@@ -56,29 +56,16 @@ public class MyLinkedList<E> implements MyList<E> {
             next.previous = previous;
             previous.next = next;
         }
-
         size--;
         return deletedNode.value;
     }
 
-    public boolean remove(Object o) {
-
-        boolean contains = false;
+    public boolean remove(E e) {
         int index;
-        Node<E> deletedNode = first;
-
-        for (index = 0; index < size; index++) {
-            if (deletedNode.value.equals(o)) {
-                contains = true;
-                break;
-            }
-            deletedNode = deletedNode.next;
-        }
-        if (contains) {
+        if ((index = getObjectIndex(e)) != -1) {
             remove(index);
             return true;
         }
-
         return false;
     }
 
@@ -121,6 +108,19 @@ public class MyLinkedList<E> implements MyList<E> {
 
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    private int getObjectIndex(E e) {
+        Node<E> currentNode = first;
+        int index = 0;
+        do {
+            if (currentNode.value.equals(e)) {
+                return index;
+            }
+            index++;
+        } while ((currentNode = currentNode.next) != null);
+
+        return -1;
     }
 
     @Override

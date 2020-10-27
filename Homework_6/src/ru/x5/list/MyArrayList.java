@@ -35,28 +35,18 @@ public class MyArrayList<E> implements MyList<E> {
         return cursor == 0;
     }
 
-    public boolean contains(Object o) {
-        if (cursor > 0) {
-
-            for (int i = 0; i < cursor; i++) {
-                if (internalArray[i].equals(o)) {
-                    return true;
-                }
-
-            }
-            return false;
+    public boolean contains(E e) {
+        if (getObjectIndex(e) != -1) {
+            return true;
         }
         return false;
     }
 
     public boolean add(E e) {
-
         if (cursor >= lengthInternalArray) {
             arrayIncrease();
         }
-
         internalArray[cursor++] = e;
-
         return true;
     }
 
@@ -71,48 +61,25 @@ public class MyArrayList<E> implements MyList<E> {
         return internalArray[index];
     }
 
-    public boolean remove(Object o) {
-
-        boolean contains = false;
+    public boolean remove(E e) {
         int index;
-
-        for (index = 0; index < cursor; index++) {
-            if (internalArray[index].equals(o)) {
-                contains = true;
-                break;
-            }
-        }
-        if (contains) {
+        if ((index = getObjectIndex(e)) != -1) {
             remove(index);
             return true;
         }
-
         return false;
     }
 
     public E remove(int index) {
-        if (index > cursor && index < 0)
+        if (index >= cursor && index < 0)
             throw new IndexOutOfBoundsException("Invalid index");
 
         E objectToDelete = internalArray[index];
-        if (index == 0)
-            internalArray = Arrays.copyOfRange(internalArray, index + 1, lengthInternalArray);
-        else if (index == cursor)
-            internalArray = Arrays.copyOfRange(internalArray, 0, index);
-        else {
-            E[] modifiedArray = newInternalArray(cursor - 1);
 
-            E[] rightPartOfTheArray = Arrays.copyOf(internalArray, index);
-            E[] leftPartOfTheArray = Arrays.copyOfRange(internalArray, index + 1, cursor);
+        System.arraycopy(internalArray, index + 1, internalArray, index, cursor - index - 1);
 
-            System.arraycopy(rightPartOfTheArray, 0, modifiedArray, 0, rightPartOfTheArray.length);
-            System.arraycopy(leftPartOfTheArray, 0, modifiedArray, index, leftPartOfTheArray.length);
+        internalArray[--cursor] = null;
 
-            internalArray = modifiedArray;
-
-        }
-
-        cursor -= 1;
         return objectToDelete;
     }
 
@@ -121,7 +88,6 @@ public class MyArrayList<E> implements MyList<E> {
         cursor = 0;
     }
 
-    @SuppressWarnings("unchecked")
     private E[] newInternalArray(int internalSize) {
         return (E[]) new Object[internalSize];
     }
@@ -133,9 +99,18 @@ public class MyArrayList<E> implements MyList<E> {
 
     }
 
+    private int getObjectIndex(E e) {
+
+        for (int index = 0; index < cursor; index++) {
+            if (internalArray[index].equals(e)) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public String toString() {
-
         return Arrays.toString(Arrays.copyOf(internalArray, cursor));
 
     }
