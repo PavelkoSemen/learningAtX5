@@ -2,7 +2,13 @@ package ru.x5.service.dao;
 
 import ru.x5.service.accountservice.Account;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Savepoint;
+import java.sql.DriverManager;
+
 import java.util.ResourceBundle;
 
 public class H2DAO implements DAO<Account> {

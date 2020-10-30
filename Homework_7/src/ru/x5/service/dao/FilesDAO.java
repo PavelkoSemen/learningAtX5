@@ -3,7 +3,13 @@ package ru.x5.service.dao;
 import ru.x5.service.accountservice.Account;
 import ru.x5.service.myexception.ExistingAccountException;
 
-import java.io.*;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.FileWriter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,14 +58,13 @@ public class FilesDAO implements DAO<Account> {
 
     @Override
     public void save(Account account) {
+        if (isFileContains(account.getId())) {
+            throw new ExistingAccountException("Account already exists");
+        }
         String currentRecording = account.getId() + separator + account.getHolder() + separator + account.getAmount();
         try (var writer = new PrintWriter(new FileWriter(DBFile, true))) {
-            if (isFileContains(account.getId())) {
-                throw new ExistingAccountException("Account already exists");
-            }
             writer.println(currentRecording);
             writer.flush();
-
         } catch (IOException e) {
             System.out.println(e.toString());
         }
@@ -75,10 +80,8 @@ public class FilesDAO implements DAO<Account> {
 
     @Override
     public void delete(Account account) {
-
         String deleteRecordingID = account.getId() + separator;
         List<String> recordingList = new ArrayList<>();
-
         try (var reader = new BufferedReader(new FileReader(DBFile))) {
             String currentRecording;
             while ((currentRecording = reader.readLine()) != null) {
@@ -87,7 +90,6 @@ public class FilesDAO implements DAO<Account> {
                 }
             }
             updateFile(recordingList);
-
         } catch (IOException e) {
             System.out.println(e.toString());
         }
@@ -95,7 +97,6 @@ public class FilesDAO implements DAO<Account> {
 
     private boolean isEmptyFile() {
         boolean isEmpty = DBFile.length() != 0;
-
         if (DBFile.exists() && isEmpty) {
             return false;
         }
@@ -103,7 +104,6 @@ public class FilesDAO implements DAO<Account> {
     }
 
     private void createBaseFile() {
-
         try (var writer = new PrintWriter(new FileWriter(DBFile))) {
             int baseLineCount = 10;
             String holder;
@@ -123,8 +123,8 @@ public class FilesDAO implements DAO<Account> {
         String path = DBFile.getAbsolutePath();
 
         DBFile.delete();
-        File newFile = new File(path);
 
+        File newFile = new File(path);
         try (var writer = new PrintWriter(new FileWriter(newFile))) {
             for (String currentRecording : accountList) {
                 writer.println(currentRecording);
@@ -139,7 +139,6 @@ public class FilesDAO implements DAO<Account> {
         boolean isContains = false;
         String recordingID = id + separator;
         try (var reader = new BufferedReader(new FileReader(DBFile))) {
-
             String currentRecording;
             while ((currentRecording = reader.readLine()) != null) {
                 if (currentRecording.startsWith(recordingID)) {
@@ -147,7 +146,6 @@ public class FilesDAO implements DAO<Account> {
                     break;
                 }
             }
-
         } catch (IOException e) {
             System.out.println(e.toString());
         }
