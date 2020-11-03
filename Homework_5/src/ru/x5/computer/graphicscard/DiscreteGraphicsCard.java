@@ -14,7 +14,12 @@ public class DiscreteGraphicsCard extends GraphicsCard {
     }
 
     @Override
-    public String cardInfo() {
+    public void start() {
+        System.out.println("Discrete graphics card start");
+    }
+
+    @Override
+    public String getInfo() {
         return "Внешняя видеокарта " + super.baseCardInfo() +
                 ", тип слота " + this.typeSlot;
     }

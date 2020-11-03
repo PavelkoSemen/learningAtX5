@@ -1,12 +1,14 @@
 package ru.x5.computer;
 
-import ru.x5.computer.Computer;
-import ru.x5.computer.ComputerFacade;
+import ru.x5.computer.computer.BuildComputer;
+import ru.x5.computer.computer.Computer;
+import ru.x5.computer.computer.GamingComputer;
 
 public class Main {
 
     public static void main(String[] args) {
-        Computer baseComputer = new ComputerFacade().baseComputer();
-        baseComputer.computerInfo();
+        BuildComputer buildComputer = new BuildComputer();
+        buildComputer.setComputerStrategy(new GamingComputer());
+        Computer gamingComputer = new ComputerFacade().startComputer(buildComputer.build());
     }
 }

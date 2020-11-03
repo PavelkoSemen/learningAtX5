@@ -15,7 +15,12 @@ public class IntegratedGraphicsCard extends GraphicsCard {
     }
 
     @Override
-    public String cardInfo() {
+    public void start() {
+        System.out.println("Integrated graphics card start");
+    }
+
+    @Override
+    public String getInfo() {
         return "Встроенная видеокарта " + super.baseCardInfo() +
                 ", используемая RAM " + this.usedRAM;
     }

@@ -1,6 +1,8 @@
 package ru.x5.computer.ram;
 
-public class RAMImpl implements RAM {
+import ru.x5.computer.component.Component;
+
+public class RAMImpl implements Component {
     private int RAMFrequency;
     private int memoryCount;
     private String typeMemory;
@@ -14,11 +16,17 @@ public class RAMImpl implements RAM {
     }
 
     @Override
-    public String RAMInfo() {
+    public void start() {
+        System.out.println("RAM start");
+    }
+
+    @Override
+    public String getInfo() {
         return "Оперативная память " + this.manufacturer +
                 ", размер " + this.memoryCount +
                 ", частота " + this.RAMFrequency +
-                ", тип памяти " + this.typeMemory;
+                ", тип памяти " + this.typeMemory
+                ;
     }
 
     public static class Builder {

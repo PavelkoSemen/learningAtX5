@@ -1,6 +1,8 @@
 package ru.x5.computer.cpu;
 
-public class CPUImpl implements CPU {
+import ru.x5.computer.component.Component;
+
+public class CPUImpl implements Component {
     private int clockFrequency;
     private int numberOfCores;
     private int cash;
@@ -16,7 +18,12 @@ public class CPUImpl implements CPU {
     }
 
     @Override
-    public String CPUInfo() {
+    public void start() {
+        System.out.println("CPU start");
+    }
+
+    @Override
+    public String getInfo() {
         return "Процессор " + this.manufacturer +
                 ", название " + this.name +
                 ", частота " + this.clockFrequency +

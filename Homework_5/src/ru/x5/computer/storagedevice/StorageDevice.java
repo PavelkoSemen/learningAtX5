@@ -1,31 +1,24 @@
 package ru.x5.computer.storagedevice;
 
-public abstract class StorageDevice {
+import ru.x5.computer.component.Component;
+
+public abstract class StorageDevice implements Component {
     private int memoryCount;
     private String manufacturer;
     private String forms;
-    private StrategyStorageDevice typeStorageDevice;
+    private String storageType;
 
-    public StorageDevice(int memoryCount, String manufacturer, String forms) {
+    public StorageDevice(int memoryCount, String manufacturer, String forms, String storageType) {
         this.memoryCount = memoryCount;
         this.manufacturer = manufacturer;
         this.forms = forms;
+        this.storageType = storageType;
     }
-
-    public abstract String storageDeviceInfo();
 
     public String baseStorageDeviceInfo() {
         return this.manufacturer + ", количество памяти " +
                 this.memoryCount + ", форм-фактор " +
-                this.forms + ", тип памяти " +
-                this.typeStorageDevice();
-    }
-
-    public String typeStorageDevice() {
-        return typeStorageDevice.typeStorageDevice();
-    }
-
-    public void setTypeStorageDevice(StrategyStorageDevice typeStorageDevice) {
-        this.typeStorageDevice = typeStorageDevice;
+                this.forms + ", тип накопителя" +
+                this.storageType;
     }
 }

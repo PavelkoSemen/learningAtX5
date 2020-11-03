@@ -15,5 +15,7 @@ public class Main {
         AccountService accountService = new AccountServiceImpl(accountDAO);
         ClassToManage classToManage = new ClassToManage(accountService);
         classToManage.run();
+
+        
     }
 }

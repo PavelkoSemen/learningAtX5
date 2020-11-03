@@ -5,7 +5,6 @@ import ru.x5.list.MyArrayList;
 public class Box<T extends Fruit> {
 
     private final MyArrayList<T> fruitList;
-
     public Box() {
         fruitList = new MyArrayList<>();
     }

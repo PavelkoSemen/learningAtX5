@@ -1,6 +1,8 @@
 package ru.x5.computer.monitor;
 
-public class MonitorImpl implements Monitor {
+import ru.x5.computer.component.Component;
+
+public class MonitorImpl implements Component {
     private String manufacturer;
     private String screenMatrices;
     private int diagonal;
@@ -12,7 +14,12 @@ public class MonitorImpl implements Monitor {
     }
 
     @Override
-    public String monitorInfo() {
+    public void start() {
+        System.out.println("Monitor start");
+    }
+
+    @Override
+    public String getInfo() {
         return "Монитор " + this.manufacturer +
                 ", тип матрицы " + this.screenMatrices +
                 ", диагональ " + this.diagonal;
