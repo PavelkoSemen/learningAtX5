@@ -1,12 +1,12 @@
 package ru.x5.computer.storagedevice;
 
-public class HDD extends StorageDevice {
+public class Hdd extends StorageDevice {
 
-    public HDD() {
+    public Hdd() {
         super(128000, "Samsung", "small", "внутренний");
     }
 
-    public HDD(int memoryCount, String manufacturer, String forms, String storageType, int maximumMemoryCount) {
+    public Hdd(int memoryCount, String manufacturer, String forms, String storageType, int maximumMemoryCount) {
         super(memoryCount, manufacturer, forms, storageType);
     }
 

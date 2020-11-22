@@ -1,15 +1,15 @@
 package ru.x5.computer.storagedevice;
 
-public class SSD extends StorageDevice {
+public class Ssd extends StorageDevice {
     private int readWriteSpeed;
 
 
-    public SSD() {
+    public Ssd() {
         super(128000, "Samsung", "small", "внутренний");
         this.readWriteSpeed = 500;
     }
 
-    public SSD(int memoryCount, String manufacturer, String forms, String storageType, String externalConnector) {
+    public Ssd(int memoryCount, String manufacturer, String forms, String storageType, String externalConnector) {
         super(memoryCount, manufacturer, forms, storageType);
         this.readWriteSpeed = readWriteSpeed;
     }

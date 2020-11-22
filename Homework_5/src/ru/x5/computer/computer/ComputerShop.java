@@ -1,6 +1,6 @@
 package ru.x5.computer.computer;
 
-public class BuildComputer {
+public class ComputerShop {
     ComputerStrategy computerStrategy;
 
     public Computer build(){

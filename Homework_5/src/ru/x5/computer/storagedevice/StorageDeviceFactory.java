@@ -3,19 +3,21 @@ package ru.x5.computer.storagedevice;
 import ru.x5.computer.component.Component;
 import ru.x5.computer.component.ComponentFactory;
 
-public class StorageDeviceFactory implements ComponentFactory<TypeStorageDevice> {
+public class StorageDeviceFactory implements ComponentFactory {
     @Override
-    public Component createComponent(TypeStorageDevice typeStorageDevice) {
+    public Component createComponent(String typeStorageDevice) {
+        TypeStorageDevice type = TypeStorageDevice.valueOf(typeStorageDevice.toUpperCase());
         Component StorageDevice = null;
-        switch (typeStorageDevice) {
+        switch (type) {
             case SSD:
-                StorageDevice = new SSD();
+                StorageDevice = new Ssd();
                 break;
             case HDD:
-                StorageDevice = new HDD();
+                StorageDevice = new Hdd();
                 break;
             default:
-                throw new IllegalArgumentException("Несуществующий тип накопителя");
+                throw new EnumConstantNotPresentException(TypeStorageDevice.class, type.name());
+
         }
         return StorageDevice;
     }
